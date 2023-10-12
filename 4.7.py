@@ -2,9 +2,7 @@ from math import pi
 from math import atan
 from prettytable import PrettyTable
 
-xp, xk, dx = map(float, input().split())
-#eps = float(input())
-eps = 0.000000000001
+xp, xk, dx, eps = map(float, input().split())
 th = ['x', 'atan', 'Сума', 'n']
 table = PrettyTable(th)
 td = []
@@ -12,11 +10,12 @@ x = xp
 while x <= xk:
     S = 0
     n = 1
-    a = x**3/3+x
+    a = pi/2-x+(x**3)/3
     while True:
         S += a
         a *= -(x ** 2) / 2
         if abs(a) < eps:
+            S += pi/2
             td.append(x)
             td.append(atan(x))
             td.append(S)
